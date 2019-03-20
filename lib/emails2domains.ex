@@ -70,7 +70,7 @@ defmodule Emails2Domains.CLI do
     File.stream!(options[:file])
       |> Stream.map(&(get_domain(&1))) # Stream.map(enum, fun)
       |> Enum.to_list # Force the computation, get the full list.
-      |> MapSet.new   # Turn the List to a map set, eliminate
+      |> MapSet.new   # Turn the List to a map set, eliminates duplicate domains
       |> Stream.map(&(IO.puts(&1))) # Dump to the console
       |> Stream.run
 
